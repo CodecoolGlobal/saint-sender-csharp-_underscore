@@ -13,25 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SaintSender.Core.Services;
+using SaintSender.DesktopUI.ViewModels;
 
-namespace SaintSender.DesktopUI
+namespace SaintSender.DesktopUI.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly MainWindowViewModel mainWindowViewModel;
         public MainWindow()
         {
             InitializeComponent();
+            mainWindowViewModel = new MainWindowViewModel();
+            this.DataContext = mainWindowViewModel;
+
         }
 
-        private void GreetBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var service = new GreetService();
-            var name = NameTxt.Text;
-            var greeting = service.Greet(name);
-            ResultTxt.Text = greeting;
-        }
     }
 }
