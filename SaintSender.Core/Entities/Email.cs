@@ -10,10 +10,9 @@ namespace SaintSender.Core.Entities
     public class Email
     {
         public string From { get; set; }
+        public string Recipient { get; set; }
         public string Subject { get; set; }
-
         public string Body { get; set; }
-
         public string Date { get; set; }
 
 
@@ -23,6 +22,13 @@ namespace SaintSender.Core.Entities
             Subject = subject;
             Body = body.ToString();
             Date = date.ToString();
+        }
+
+        public Email(string recipient, string subject, string body)
+        {
+            Recipient = recipient;
+            Subject = subject;
+            Body = body;
         }
     }
 }

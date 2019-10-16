@@ -68,6 +68,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\ComposeWindowViewModel.cs" />
     <Compile Include="Views\ComposeWindow.xaml.cs">
       <DependentUpon>ComposeWindow.xaml</DependentUpon>
     </Compile>

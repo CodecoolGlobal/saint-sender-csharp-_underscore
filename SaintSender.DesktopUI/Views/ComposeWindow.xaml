@@ -20,20 +20,24 @@
                    VerticalAlignment="Center">
             <Label>To</Label>
             <TextBox Name="to"
-                     Margin="5,0"></TextBox>
+                     Margin="5,0"
+                     Text="{Binding Recipient}"></TextBox>
         </DockPanel>
 
         <DockPanel Grid.Row="1"
                    VerticalAlignment="Center">
             <Label>Subject</Label>
             <TextBox Name="subject"
-                     Margin="5,0"></TextBox>
+                     Margin="5,0"
+                     Text="{Binding Subject}"></TextBox>
         </DockPanel>
 
         <TextBox Grid.Row="2"
+                 Name="body"
                  Margin="5"
                  AcceptsReturn="True"
-                 TextWrapping="WrapWithOverflow"></TextBox>
+                 TextWrapping="WrapWithOverflow"
+                 Text="{Binding Body}"></TextBox>
 
         <StackPanel Grid.Row="3"
                     Orientation="Horizontal"
@@ -42,7 +46,8 @@
             <Button x:Name="send"
                     Content="Send"
                     Padding="5,0"
-                    Margin="5,0"></Button>
+                    Margin="5,0"
+                    Click="send_Click"></Button>
             <Button x:Name="cancel"
                     Content="Cancel"
                     Padding="5,0"

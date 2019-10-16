@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using SaintSender.Core.Entities;
 using MailKit.Search;
 using MimeKit;
+using MailKit.Net.Smtp;
 
 namespace SaintSender.Core.Services
 {
@@ -24,7 +25,7 @@ namespace SaintSender.Core.Services
 
         public void Connection()
         {
-            using(ImapClient client = new ImapClient())
+            using (ImapClient client = new ImapClient())
             {
                 client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
                 client.Authenticate("underscoretestemail", "wjurtaqxhvfupaal");
@@ -43,6 +44,31 @@ namespace SaintSender.Core.Services
         public ObservableCollection<Email> getlist()
         {
             return emails;
+        }
+
+        public static void SendMail(Email email)
+        {
+            MimeMessage message = new MimeMessage();
+            BodyBuilder bodyBuilder = new BodyBuilder();
+            message.From.Add(new MailboxAddress("underscoretestemail@gmail.com"));
+            message.To.Add(new MailboxAddress(email.Recipient));
+            if (email.Subject == null)
+            {
+                message.Subject = "";
+            }
+            else
+            {
+                message.Subject = email.Subject;
+            }
+
+            bodyBuilder.HtmlBody = email.Body;
+            message.Body = bodyBuilder.ToMessageBody();
+            SmtpClient client = new SmtpClient();
+            client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+            client.Connect("smtp.gmail.com", 587);
+            client.Authenticate("underscoretestemail", "wjurtaqxhvfupaal");
+            client.Send(message);
+            client.Disconnect(true);
         }
     }
 }

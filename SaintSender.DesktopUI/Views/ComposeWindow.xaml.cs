@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaintSender.DesktopUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,13 +20,24 @@ namespace SaintSender.DesktopUI.Views
     /// </summary>
     public partial class ComposeWindow : Window
     {
+        private readonly ComposeWindowViewModel composeWindowViewModel;
+
         public ComposeWindow()
         {
             InitializeComponent();
+            composeWindowViewModel = new ComposeWindowViewModel();
+            this.DataContext = composeWindowViewModel;
         }
 
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
+            //messagebox discard
+            this.Close();
+        }
+
+        private void send_Click(object sender, RoutedEventArgs e)
+        {
+            composeWindowViewModel.CopmoseMail();
             this.Close();
         }
     }
