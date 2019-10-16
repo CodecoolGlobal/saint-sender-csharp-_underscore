@@ -3,45 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Limilabs.Mail;
-using SaintSender.Core.Entities;
-using SaintSender.Core.Services;
 using SaintSender.DesktopUI.ViewModels;
 
 namespace SaintSender.DesktopUI.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for OpenEmailWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class OpenEmailWindow : Window
     {
         private readonly MainWindowViewModel mainWindowViewModel;
-        public int messageId { get; set; }
 
-        public MainWindow()
+        private readonly MainWindow mainWindow;
+
+        public OpenEmailWindow()
         {
             InitializeComponent();
             mainWindowViewModel = new MainWindowViewModel();
-            this.DataContext = mainWindowViewModel;
-
-        }
-
-        private void lbi_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            Email email = listBox.SelectedItem as Email;
-            messageId = email.MessageId;
-        
-            OpenEmailWindow win = new OpenEmailWindow();
-            win.Show();
+            mainWindow = new MainWindow();
+            string strHtml = mainWindowViewModel.emails[mainWindow.messageId].Body;
+            browser.NavigateToString(strHtml);
         }
     }
 }

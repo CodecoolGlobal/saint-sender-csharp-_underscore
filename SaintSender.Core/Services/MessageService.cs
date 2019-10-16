@@ -26,6 +26,7 @@ namespace SaintSender.Core.Services
         {
             using(ImapClient client = new ImapClient())
             {
+                int id = 0;
                 client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
                 client.Authenticate("underscoretestemail", "wjurtaqxhvfupaal");
                 client.Inbox.Open(FolderAccess.ReadOnly);
@@ -34,7 +35,8 @@ namespace SaintSender.Core.Services
                 foreach (UniqueId uniqueId in uniqueIds)
                 {
                     MimeMessage message = client.Inbox.GetMessage(uniqueId);
-                    emails.Add(new Email(message.From, message.Subject, message.Body, message.Date));
+                    emails.Add(new Email(id, message.From, message.Subject, message.HtmlBody, message.Date));
+                    id++;
                 }
                 client.Disconnect(true);
             }

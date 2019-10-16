@@ -9,6 +9,7 @@ namespace SaintSender.Core.Entities
 {
     public class Email
     {
+        public int MessageId { get; set; }
         public string From { get; set; }
         public string Subject { get; set; }
 
@@ -17,11 +18,12 @@ namespace SaintSender.Core.Entities
         public string Date { get; set; }
 
 
-        public Email(InternetAddressList from, string subject, MimeEntity body, DateTimeOffset date)
+        public Email(int messageId, InternetAddressList from, string subject, string body, DateTimeOffset date)
         {
+            MessageId = messageId;
             From = from.ToString();
             Subject = subject;
-            Body = body.ToString();
+            Body = body;
             Date = date.ToString();
         }
     }
