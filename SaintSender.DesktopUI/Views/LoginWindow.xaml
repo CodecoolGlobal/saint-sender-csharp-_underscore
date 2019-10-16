@@ -26,8 +26,8 @@
             <PasswordBox x:Name="PasswordTxt"></PasswordBox>
         </DockPanel>
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="Sign in" Margin="10" Padding="5"></Button>
-            <Button Content="Cancel" Margin="10" Padding="5"></Button>
+            <Button Content="Sign in" Margin="10" Padding="5" Click="SingInButton_Click"></Button>
+            <Button Content="Cancel" Margin="10" Padding="5" Click="CancelButton_Click"></Button>
         </StackPanel>
 
     </Grid>
