@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaintSender.DesktopUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,9 +27,13 @@ namespace SaintSender.DesktopUI.Views
 
         private void SingInButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            Close();
+            if (LoginWindowViewModel.ValidEmailAdress(EmailTxt.Text))
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Close();
+            }
+            
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
