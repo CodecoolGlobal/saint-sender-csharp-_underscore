@@ -13,15 +13,15 @@ namespace SaintSender.DesktopUI.ViewModels
    public class MainWindowViewModel : INotifyPropertyChanged
     {
         
-        public ObservableCollection<Email> emails { get; set; } = new ObservableCollection<Email>();
+        public ObservableCollection<Email> Emails { get; set; } = new ObservableCollection<Email>();
+        public event PropertyChangedEventHandler PropertyChanged;
 
 
         public MainWindowViewModel()
         {
             MessageService messageService = new MessageService();
-            emails = messageService.getlist();
+            Emails = messageService.getlist();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
