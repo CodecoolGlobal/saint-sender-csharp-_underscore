@@ -19,11 +19,11 @@
         </Grid.RowDefinitions>
         <DockPanel LastChildFill="True"  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" >
             <Label VerticalAlignment="Center">Email</Label>
-            <TextBox x:Name="EmailTxt"></TextBox>
+            <TextBox x:Name="EmailTxt" Text="{Binding userName}"></TextBox>
         </DockPanel>
         <DockPanel LastChildFill="True" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" >
             <Label>Password</Label>
-            <PasswordBox x:Name="PasswordTxt"></PasswordBox>
+            <TextBox x:Name="PasswordTxt" Text="{Binding password}"></TextBox>
         </DockPanel>
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Content="Sign in" Margin="10" Padding="5" Click="SingInButton_Click"></Button>

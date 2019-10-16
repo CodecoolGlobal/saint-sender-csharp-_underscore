@@ -15,33 +15,35 @@ namespace SaintSender.Core.Services
 {
     public class MessageService
     {
+
+        private LoginWindowviewModel LoginWindowviewModel;
         private ObservableCollection<Email> emails { get; set; } = new ObservableCollection<Email>();
+        public ImapClient client;
 
-        public MessageService()
+
+        public MessageService(User user)
         {
-            Connection();
+            client = new ImapClient();
+            Connection(user.UserName, user.Password);
         }
 
-        public void Connection()
+        public void Connection(string userName, string password)
         {
-            using(ImapClient client = new ImapClient())
+            client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
+            client.Authenticate(userName, password);
+        }
+
+
+        public ObservableCollection<Email> GetMails()
+        {
+            client.Inbox.Open(FolderAccess.ReadOnly);
+            IList<UniqueId> uniqueIds = client.Inbox.Search(SearchQuery.All);
+            foreach (UniqueId uniqueId in uniqueIds)
             {
-                client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
-                client.Authenticate("underscoretestemail", "wjurtaqxhvfupaal");
-                client.Inbox.Open(FolderAccess.ReadOnly);
-                IList<UniqueId> uniqueIds = client.Inbox.Search(SearchQuery.All);
-
-                foreach (UniqueId uniqueId in uniqueIds)
-                {
-                    MimeMessage message = client.Inbox.GetMessage(uniqueId);
-                    emails.Add(new Email(message.From, message.Subject, message.Body, message.Date));
-                }
-                client.Disconnect(true);
+                MimeMessage message = client.Inbox.GetMessage(uniqueId);
+                emails.Add(new Email(message.From, message.Subject, message.Body, message.Date));
             }
-        }
-
-        public ObservableCollection<Email> getlist()
-        {
+            client.Disconnect(true);
             return emails;
         }
     }
