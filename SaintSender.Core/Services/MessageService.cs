@@ -34,7 +34,7 @@ namespace SaintSender.Core.Services
                 foreach (UniqueId uniqueId in uniqueIds)
                 {
                     MimeMessage message = client.Inbox.GetMessage(uniqueId);
-                    emails.Add(new Email(message.From, message.Subject, message.Body));
+                    emails.Add(new Email(message.From, message.Subject, message.Body, message.Date));
                 }
                 client.Disconnect(true);
             }
