@@ -37,7 +37,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Grid.Column="0" Content="Compose" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Padding="10">
+        <Button Grid.Column="0" Content="Compose" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Padding="10"
+                Click="Button_Click">
         </Button>
 
     </Grid>

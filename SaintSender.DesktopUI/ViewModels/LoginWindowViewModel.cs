@@ -30,12 +30,5 @@ namespace SaintSender.DesktopUI.ViewModels
         {
             LoginService.Login(userName, password);
         }
-
-        //public void ExecuteSignIncommand(object parameter)
-        //{
-        //    var passwordBox = parameter as PasswordBox;
-        //    password = passwordBox.Password;
-        //    //LoginService.
-        //}
     }
 }
