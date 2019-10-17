@@ -26,7 +26,7 @@
                    VerticalAlignment="Center">
             <Label VerticalAlignment="Center">Email</Label>
             <TextBox x:Name="EmailTxt"
-                     TextAlignment="Center"
+                     VerticalContentAlignment="Center"
                      Text="{Binding userName}"></TextBox>
         </DockPanel>
         <DockPanel LastChildFill="True"
@@ -36,7 +36,7 @@
                    VerticalAlignment="Center">
             <Label>Password</Label>
             <TextBox x:Name="PasswordTxt"
-                     TextAlignment="Center"
+                     VerticalContentAlignment="Center"
                      Text="{Binding password}"></TextBox>
         </DockPanel>
         <StackPanel Grid.Row="2"

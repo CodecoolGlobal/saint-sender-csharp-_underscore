@@ -6,38 +6,57 @@
         xmlns:local="clr-namespace:SaintSender.DesktopUI.Views"
         xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         mc:Ignorable="d"
-        Title="SainSender" Height="450" Width="800">
+        Title="SainSender"
+        Height="450"
+        Width="800">
     <Window.Resources>
-        <CollectionViewSource x:Key='src' Source="{Binding Emails}">
+        <CollectionViewSource x:Key='src'
+                              Source="{Binding Emails}">
             <CollectionViewSource.SortDescriptions>
-                <scm:SortDescription PropertyName="Date" Direction="Descending" />
+                <scm:SortDescription PropertyName="Date"
+                                     Direction="Descending" />
             </CollectionViewSource.SortDescriptions>
         </CollectionViewSource>
     </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="5*"/>
-        </Grid.ColumnDefinitions>
-        <ListBox x:Name="listBoxItems" Grid.Column="1" ItemsSource="{Binding Source={StaticResource src}}">
+        <ListBox x:Name="listBoxItems"
+                 Margin="5"
+                 ItemsSource="{Binding Source={StaticResource src}}"
+                 Grid.IsSharedSizeScope="True">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
+                    <StackPanel Orientation="Horizontal">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition SharedSizeGroup="Col1" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding From}"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Subject}"/>
-                            <TextBlock Grid.Column="2" Text="{Binding Date}"/>
+                            <TextBlock Text="{Binding From}" />
+                        </Grid>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition SharedSizeGroup="Col2" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Margin="25,0"
+                                       Text="{Binding Subject}" />
+                        </Grid>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition SharedSizeGroup="Col3" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Date}" />
                         </Grid>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Grid.Column="0" Content="Compose" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Padding="10"
+        <Button Content="Compose"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Width="100"
+                Padding="5"
+                Margin="10"
                 Click="Button_Click">
         </Button>
 
