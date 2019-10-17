@@ -2,6 +2,7 @@
 using SaintSender.DesktopUI.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,6 +51,11 @@ namespace SaintSender.DesktopUI.Views
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void PasswordTxt_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine(PasswordTxt.Password);
         }
     }
 }

@@ -11,6 +11,8 @@ using SaintSender.Core.Entities;
 using MailKit.Search;
 using MimeKit;
 using System.Windows.Threading;
+using Google.Apis.Auth.OAuth2.Flows;
+using Google.Apis.Gmail.v1;
 
 namespace SaintSender.Core.Services
 {
@@ -39,7 +41,8 @@ namespace SaintSender.Core.Services
 
         public void Connection(string userName, string password)
         {
-            client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
+            client.Connect("imap.gmail.com", 993, true);
+            client.AuthenticationMechanisms.Remove("XOAUTH2");
             client.Authenticate(userName, password);
         }
 
@@ -48,6 +51,13 @@ namespace SaintSender.Core.Services
         {
             client.Inbox.Open(FolderAccess.ReadOnly);
             IList<UniqueId> uniqueIds = client.Inbox.Search(SearchQuery.All);
+            IList<UniqueId> notSeenEmailsUniqueIds = client.Inbox.Search(SearchQuery.NotSeen);
+
+            foreach ( UniqueId uids in notSeenEmailsUniqueIds)
+            {
+                MimeMessage notSeenMessage = client.Inbox.GetMessage(uids);
+            }
+
             foreach (UniqueId uniqueId in uniqueIds)
             {
                 MimeMessage message = client.Inbox.GetMessage(uniqueId);

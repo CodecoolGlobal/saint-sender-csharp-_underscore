@@ -17,7 +17,8 @@ namespace SaintSender.Core.Services
         public static void Login(string userName, string password)
         {
             ImapClient client = new ImapClient();
-            client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
+            client.Connect("imap.gmail.com", 993, true);
+            client.AuthenticationMechanisms.Remove("XOAUTH2");
             client.Authenticate(userName, password);
         }
 
