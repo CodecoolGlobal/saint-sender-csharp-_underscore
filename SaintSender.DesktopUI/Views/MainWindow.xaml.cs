@@ -31,5 +31,10 @@ namespace SaintSender.DesktopUI.Views
 
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ComposeWindow composeWindow = new ComposeWindow();
+            composeWindow.Show();
+        }
     }
 }
