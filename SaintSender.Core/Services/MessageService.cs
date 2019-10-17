@@ -10,21 +10,31 @@ using System.Threading.Tasks;
 using SaintSender.Core.Entities;
 using MailKit.Search;
 using MimeKit;
+using System.Windows.Threading;
 
 namespace SaintSender.Core.Services
 {
     public class MessageService
     {
 
-        private LoginWindowviewModel LoginWindowviewModel;
         private ObservableCollection<Email> emails { get; set; } = new ObservableCollection<Email>();
         public ImapClient client;
 
 
         public MessageService(User user)
         {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(5);
+            timer.Tick += timer_Tick;
+            timer.Start();
             client = new ImapClient();
             Connection(user.UserName, user.Password);
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            GetMails().Clear();
+            GetMails();
         }
 
         public void Connection(string userName, string password)
@@ -43,7 +53,7 @@ namespace SaintSender.Core.Services
                 MimeMessage message = client.Inbox.GetMessage(uniqueId);
                 emails.Add(new Email(message.From, message.Subject, message.Body, message.Date));
             }
-            client.Disconnect(true);
+            //client.Disconnect(true);
             return emails;
         }
     }
