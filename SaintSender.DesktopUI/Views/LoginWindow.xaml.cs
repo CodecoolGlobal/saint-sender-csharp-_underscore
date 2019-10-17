@@ -36,15 +36,6 @@ namespace SaintSender.DesktopUI.Views
             MainWindow mainWindow = new MainWindow(user);
             mainWindow.Show();
             Close();
-            //if (LoginWindowViewModel.ValidEmailAdress(EmailTxt.Text))
-            //{
-            //    //loginWindowViewModel.ExecuteSignIncommand(PasswordTxt.Text);
-            //    loginWindowViewModel.ExecuteLogin();
-            //    MainWindow mainWindow = new MainWindow();
-            //    mainWindow.Show();
-            //    Close();
-            //}
-            
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
