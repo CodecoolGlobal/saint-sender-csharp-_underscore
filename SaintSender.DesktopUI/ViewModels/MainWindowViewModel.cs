@@ -10,11 +10,22 @@ using System.Threading.Tasks;
 
 namespace SaintSender.DesktopUI.ViewModels
 {
-   public class MainWindowViewModel
+    public class MainWindowViewModel : ViewModelBase
     {
-        
         public ObservableCollection<Email> Emails { get; set; } = new ObservableCollection<Email>();
-        
+        private Email _selectedEmail;
+        public Email selectedEmail
+        {
+            get
+            {
+                return _selectedEmail;
+            }
+            set
+            {
+                OnPropertyChanged();
+                _selectedEmail = value;
+            }
+        }
 
         public MainWindowViewModel(User user)
         {

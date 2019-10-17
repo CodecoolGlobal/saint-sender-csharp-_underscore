@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MimeKit;
 
 namespace SaintSender.Core.Entities
@@ -15,13 +11,12 @@ namespace SaintSender.Core.Entities
         public string Body { get; set; }
         public string Date { get; set; }
 
-
-        public Email(InternetAddressList from, string subject, MimeEntity body, DateTimeOffset date)
+        public Email(InternetAddressList from, string subject, string body, DateTimeOffset date)
         {
             From = from.ToString();
             Subject = subject;
-            Body = body.ToString();
-            Date = date.ToString();
+            Body = body;
+            Date = date.ToString("yyyy MMM dd HH:mm");
         }
 
         public Email(string recipient, string subject, string body)

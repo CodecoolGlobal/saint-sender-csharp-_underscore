@@ -21,6 +21,7 @@
             <Label>To</Label>
             <TextBox Name="to"
                      Margin="5,0"
+                     VerticalContentAlignment="Center"
                      Text="{Binding Recipient}"></TextBox>
         </DockPanel>
 
@@ -29,6 +30,7 @@
             <Label>Subject</Label>
             <TextBox Name="subject"
                      Margin="5,0"
+                     VerticalContentAlignment="Center"
                      Text="{Binding Subject}"></TextBox>
         </DockPanel>
 
@@ -45,12 +47,14 @@
                     VerticalAlignment="Center">
             <Button x:Name="send"
                     Content="Send"
-                    Padding="5,0"
+                    Width="60"
+                    Height="20"
                     Margin="5,0"
                     Click="send_Click"></Button>
             <Button x:Name="cancel"
                     Content="Cancel"
-                    Padding="5,0"
+                    Width="60"
+                    Height="20"
                     Margin="5,0"
                     Click="cancel_Click"></Button>
         </StackPanel>

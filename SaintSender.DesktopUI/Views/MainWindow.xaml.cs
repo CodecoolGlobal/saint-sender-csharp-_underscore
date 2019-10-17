@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -23,7 +15,6 @@ namespace SaintSender.DesktopUI.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public static bool LoggedIn { get; set; }
 
         private readonly MainWindowViewModel mainWindowViewModel;
@@ -33,7 +24,14 @@ namespace SaintSender.DesktopUI.Views
             InitializeComponent();
             mainWindowViewModel = new MainWindowViewModel(user);
             this.DataContext = mainWindowViewModel;
+        }
 
+        private void lbi_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            OpenEmailWindow win = new OpenEmailWindow(mainWindowViewModel.selectedEmail.Body,
+                                                      mainWindowViewModel.selectedEmail.From,
+                                                      mainWindowViewModel.selectedEmail.Subject);
+            win.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -13,26 +13,48 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <DockPanel LastChildFill="True"  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" >
-            <Label VerticalAlignment="Center">User</Label>
-            <TextBox x:Name="UserNameTxt" Text="{Binding userName}"></TextBox>
+        <DockPanel LastChildFill="True"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Center">
+            <Label VerticalAlignment="Center">Email</Label>
+            <TextBox x:Name="EmailTxt"
+                     VerticalContentAlignment="Center"
+                     Text="{Binding userName}"></TextBox>
         </DockPanel>
-        <DockPanel LastChildFill="True" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" >
-            <Label >Password</Label>
-            <TextBox x:Name="PasswordTxt" Text="{Binding password}" Style="{StaticResource TextBoxStyle}" FontSize="16"></TextBox>
+        <DockPanel LastChildFill="True"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Center">
+            <Label>Password</Label>
+            <TextBox x:Name="PasswordTxt" Text="{Binding password}" 
+                     Style="{StaticResource TextBoxStyle}" 
+                     FontSize="16"></TextBox>
         </DockPanel>
-        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="Sign in" Margin="10" Padding="5" Click="SingInButton_Click"></Button>
-            <Button Content="Cancel" Margin="10" Padding="5" Click="CancelButton_Click"></Button>
+        <StackPanel Grid.Row="2"
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <Button Content="Sign in"
+                    Margin="10"
+                    Padding="5"
+                    Click="SingInButton_Click"></Button>
+            <Button Content="Cancel"
+                    Margin="10"
+                    Padding="5"
+                    Click="CancelButton_Click"></Button>
         </StackPanel>
 
     </Grid>
