@@ -73,9 +73,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\ComposeWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\OpenEmailWindow.xaml.cs">
-      <DependentUpon>OpenEmailWindow.xaml</DependentUpon>
+    <Compile Include="Views\ComposeWindow.xaml.cs">
+      <DependentUpon>ComposeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OpenEmailWiondow.xaml.cs">
+      <DependentUpon>OpenEmailWiondow.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\LoginWindow.xaml">
       <SubType>Designer</SubType>
@@ -89,6 +93,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\LoginWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -97,7 +102,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\OpenEmailWindow.xaml">
+    <Page Include="Views\ComposeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OpenEmailWiondow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

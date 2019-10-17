@@ -4,26 +4,43 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaintSender.DesktopUI.Views"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         mc:Ignorable="d"
         Title="SainSender" Height="450" Width="800">
+    <Window.Resources>
+        <CollectionViewSource x:Key='src' Source="{Binding Emails}">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="Date" Direction="Descending" />
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Name="listBox" Grid.Column="1" ItemsSource="{Binding emails}" SelectedItem="{Binding selectedEmail}" ListBoxItem.MouseDoubleClick="lbi_MouseDoubleClick">
-            <ListBox.ItemTemplate>
+        <!--<ListBox Name="listBox" Grid.Column="1" ItemsSource="{Binding emails}" SelectedItem="{Binding selectedEmail}" ListBoxItem.MouseDoubleClick="lbi_MouseDoubleClick">-->
+        <ListBox x:Name="listBoxItems" Grid.Column="1" ItemsSource="{Binding Source={StaticResource src}}" SelectedItem="{Binding selectedEmail}" ListBoxItem.MouseDoubleClick="lbi_MouseDoubleClick">
+                <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding Subject}" />
-                    <TextBlock Text="{Binding From}"/>
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding From}"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Subject}"/>
+                            <TextBlock Grid.Column="2" Text="{Binding Date}"/>
+                        </Grid>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Grid.Column="0" Content="Compose" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Padding="10">
+        <Button Grid.Column="0" Content="Compose" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Padding="10"
+                Click="Button_Click">
         </Button>
-        <TextBlock Text="{Binding selectedEmail.Subject}"/>
 
     </Grid>
 </Window>

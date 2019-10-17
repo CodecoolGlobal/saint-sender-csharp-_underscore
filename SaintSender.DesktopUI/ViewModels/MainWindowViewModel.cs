@@ -12,8 +12,7 @@ namespace SaintSender.DesktopUI.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-
-        public ObservableCollection<Email> emails { get; set; } = new ObservableCollection<Email>();
+        public ObservableCollection<Email> Emails { get; set; } = new ObservableCollection<Email>();
         private Email _selectedEmail;
         public Email selectedEmail
         {
@@ -28,10 +27,10 @@ namespace SaintSender.DesktopUI.ViewModels
             }
         }
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(User user)
         {
-            MessageService messageService = new MessageService();
-            emails = messageService.getlist();
+            MessageService messageService = new MessageService(user);
+            Emails = messageService.GetMails();
         }
 
     }
