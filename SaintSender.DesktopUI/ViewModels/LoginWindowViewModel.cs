@@ -17,7 +17,23 @@ namespace SaintSender.DesktopUI.ViewModels
 
         public void ExecuteLogin()
         {
-            LoginService.Login(userName, password);
+            if (CanLogin())
+            {
+                LoginService.Login(userName, password);
+            }
+        }
+
+        public bool CanLogin()
+        {
+            if (string.IsNullOrEmpty(userName) && string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please fill all of the fields!", "Alert", MessageBoxButton.OK);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

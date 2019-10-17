@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaintSender.DesktopUI.Views"
         mc:Ignorable="d"
-        Title="LoginWindow"
-        Height="350"
-        Width="600">
+        Title="LoginWindow" Height="350" Width="600">
+    <Window.Resources>
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="{StaticResource Dots}"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -35,9 +38,9 @@
                    HorizontalAlignment="Stretch"
                    VerticalAlignment="Center">
             <Label>Password</Label>
-            <TextBox x:Name="PasswordTxt"
-                     VerticalContentAlignment="Center"
-                     Text="{Binding password}"></TextBox>
+            <TextBox x:Name="PasswordTxt" Text="{Binding password}" 
+                     Style="{StaticResource TextBoxStyle}" 
+                     FontSize="16"></TextBox>
         </DockPanel>
         <StackPanel Grid.Row="2"
                     Grid.Column="1"

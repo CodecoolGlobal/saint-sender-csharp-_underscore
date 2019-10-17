@@ -16,7 +16,7 @@ namespace SaintSender.Core.Services
     {
 
         private ObservableCollection<Email> emails { get; set; } = new ObservableCollection<Email>();
-        public ImapClient client;
+        public static ImapClient client;
         private static string _userName;
         private static string _password;
 
@@ -37,7 +37,7 @@ namespace SaintSender.Core.Services
             GetMails();
         }
 
-        public void Connection(string userName, string password)
+        public static void Connection(string userName, string password)
         {
             client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
             client.Authenticate(userName, password);
@@ -62,7 +62,7 @@ namespace SaintSender.Core.Services
         {
             MimeMessage message = new MimeMessage();
             BodyBuilder bodyBuilder = new BodyBuilder();
-            message.From.Add(new MailboxAddress("underscoretestemail@gmail.com"));
+            message.From.Add(new MailboxAddress(_userName + "@gmail.com"));
             message.To.Add(new MailboxAddress(email.Recipient));
             message.Subject = email.Subject;
             bodyBuilder.HtmlBody = email.Body;
