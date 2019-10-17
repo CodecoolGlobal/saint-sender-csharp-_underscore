@@ -21,6 +21,7 @@
             <Label>To</Label>
             <TextBox Name="to"
                      Margin="5,0"
+                     TextAlignment="Center"
                      Text="{Binding Recipient}"></TextBox>
         </DockPanel>
 
@@ -29,6 +30,7 @@
             <Label>Subject</Label>
             <TextBox Name="subject"
                      Margin="5,0"
+                     TextAlignment="Center"
                      Text="{Binding Subject}"></TextBox>
         </DockPanel>
 

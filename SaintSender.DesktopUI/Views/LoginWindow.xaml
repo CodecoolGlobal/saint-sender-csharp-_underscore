@@ -5,29 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaintSender.DesktopUI.Views"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="350" Width="600">
+        Title="LoginWindow"
+        Height="350"
+        Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <DockPanel LastChildFill="True"  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" >
+        <DockPanel LastChildFill="True"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Center">
             <Label VerticalAlignment="Center">Email</Label>
-            <TextBox x:Name="EmailTxt" Text="{Binding userName}"></TextBox>
+            <TextBox x:Name="EmailTxt"
+                     TextAlignment="Center"
+                     Text="{Binding userName}"></TextBox>
         </DockPanel>
-        <DockPanel LastChildFill="True" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" >
+        <DockPanel LastChildFill="True"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Center">
             <Label>Password</Label>
-            <TextBox x:Name="PasswordTxt" Text="{Binding password}"></TextBox>
+            <TextBox x:Name="PasswordTxt"
+                     TextAlignment="Center"
+                     Text="{Binding password}"></TextBox>
         </DockPanel>
-        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="Sign in" Margin="10" Padding="5" Click="SingInButton_Click"></Button>
-            <Button Content="Cancel" Margin="10" Padding="5" Click="CancelButton_Click"></Button>
+        <StackPanel Grid.Row="2"
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <Button Content="Sign in"
+                    Margin="10"
+                    Padding="5"
+                    Click="SingInButton_Click"></Button>
+            <Button Content="Cancel"
+                    Margin="10"
+                    Padding="5"
+                    Click="CancelButton_Click"></Button>
         </StackPanel>
 
     </Grid>
