@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -11,96 +12,80 @@ namespace SaintSender.DesktopUI.ViewModels
 {
     public class ComposeWindowViewModel
     {
-        public String Recipient { get; set; }
-        public String Subject { get; set; }
-        public String Body { get; set; }
+        public string Recipient { get; set; }
+        public string Subject { get; set; }
+        public string Body { get; set; }
 
         Email email;
 
-        public void CopmoseMail()
+        public void ComposeMail()
         {
             email = new Email(Recipient, Subject, Body);
         }
 
-        public void Send()
+        public void SendMail()
         {
             MessageService.SendMail(email);
         }
 
         public bool IsReadyToSend()
         {
-            bool RecipientIsOK = IsRecipientOK();
-            if (!RecipientIsOK) { return false; }
-            bool SubjectIsOK = IsSubjectOK();
-            if (!SubjectIsOK) { return false; }
-            bool BodyIsOK = IsBodyOK();
-            if (!BodyIsOK) { return false; }
+            if (!IsRecipientOK()) { return false; }
+            if (!IsSubjectOK()) { return false; }
+            if (!IsBodyOK()) { return false; }
             return true;
         }
 
         private bool IsRecipientOK()
         {
-            if (String.IsNullOrEmpty(Recipient))
+            if (string.IsNullOrEmpty(Recipient))
             {
                 _ = MessageBox.Show("You can't send a mail without a recipient!", "Alert", MessageBoxButton.OK);
                 return false;
             }
-            else
+
+            if (!IsEmailAdressValid())
             {
-                return true;
+                MessageBox.Show("Email address is invalid!");
+                return false;
             }
+            return true;
+
+        }
+
+        private bool IsEmailAdressValid()
+        {
+            return Regex.IsMatch(Recipient, @"^[\w-.]+@([\w-]+.)+[\w-]{2,3}$");
         }
 
         private bool IsSubjectOK()
         {
-            if (String.IsNullOrEmpty(Subject))
-            {
-                if (AskIfEmptyIsOK(nameof(Subject)))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return true;
-            }
+            //Checks if subject is empty. If empty, it asks the user if it's OK to send the mail without subject. 
+            //If not empty, it returns true, signaling the subject is ready to send.
+            return string.IsNullOrEmpty(Subject) ? AskIfEmptyIsOK(nameof(Subject)) : true;
         }
 
         private bool IsBodyOK()
         {
-            if (String.IsNullOrEmpty(Body))
-            {
-                if (AskIfEmptyIsOK(nameof(Body)))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return true;
-            }
+            //Checks if body is empty. If empty, it asks the user if it's OK to send the mail without body. 
+            //If not empty, it returns true, signaling the body is ready to send.
+            return String.IsNullOrEmpty(Body) ? AskIfEmptyIsOK(nameof(Body)) : true;
         }
 
-        private bool AskIfEmptyIsOK(String propertyType)
+        private bool AskIfEmptyIsOK(string property)
         {
-            MessageBoxResult alert = MessageBox.Show($"You are sending the mail without {propertyType.ToLower()}. Continue?", "Alert", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            switch (alert)
-            {
-                case MessageBoxResult.Yes:
-                    return true;
+            MessageBoxResult alert = MessageBox.Show($"You are sending the E-mail without {property.ToLower()}. Continue?", "Alert", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            return alert.Equals(MessageBoxResult.Yes);
+        }
 
-                case MessageBoxResult.No:
-                    return false;
+        public bool IsReadyToCancel()
+        {
+            if (!String.IsNullOrEmpty(Body))
+            {
+                MessageBoxResult alert = MessageBox.Show("Do you want to discard this E-mail?", "Alert", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                return alert.Equals(MessageBoxResult.Yes);
             }
-            throw new ArgumentException("Error!!!!!!");
+            return true;
         }
     }
 }
