@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SaintSender.Core.Entities;
+using SaintSender.DesktopUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +21,19 @@ namespace SaintSender.DesktopUI.Views
     /// </summary>
     public partial class LoginWindow : Window
     {
+        private readonly LoginWindowViewModel loginWindowViewModel;
         public LoginWindow()
         {
             InitializeComponent();
+            loginWindowViewModel = new LoginWindowViewModel();
+            this.DataContext = loginWindowViewModel;
         }
 
         private void SingInButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
+            loginWindowViewModel.ExecuteLogin();
+            User user = new User(loginWindowViewModel.userName, loginWindowViewModel.password);
+            MainWindow mainWindow = new MainWindow(user);
             mainWindow.Show();
             Close();
         }

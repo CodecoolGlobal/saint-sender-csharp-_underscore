@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SaintSender.Core.Entities;
 using SaintSender.Core.Services;
 using SaintSender.DesktopUI.ViewModels;
 
@@ -22,11 +23,15 @@ namespace SaintSender.DesktopUI.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public static bool LoggedIn { get; set; }
+
         private readonly MainWindowViewModel mainWindowViewModel;
-        public MainWindow()
+
+        public MainWindow(User user)
         {
             InitializeComponent();
-            mainWindowViewModel = new MainWindowViewModel();
+            mainWindowViewModel = new MainWindowViewModel(user);
             this.DataContext = mainWindowViewModel;
 
         }

@@ -19,7 +19,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="1" ItemsSource="{Binding Source={StaticResource src}}">
+        <ListBox x:Name="listBoxItems" Grid.Column="1" ItemsSource="{Binding Source={StaticResource src}}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>

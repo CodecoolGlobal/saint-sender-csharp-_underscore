@@ -10,17 +10,16 @@ using System.Threading.Tasks;
 
 namespace SaintSender.DesktopUI.ViewModels
 {
-   public class MainWindowViewModel : INotifyPropertyChanged
+   public class MainWindowViewModel
     {
         
         public ObservableCollection<Email> Emails { get; set; } = new ObservableCollection<Email>();
-        public event PropertyChangedEventHandler PropertyChanged;
+        
 
-
-        public MainWindowViewModel()
+        public MainWindowViewModel(User user)
         {
-            MessageService messageService = new MessageService();
-            Emails = messageService.getlist();
+            MessageService messageService = new MessageService(user);
+            Emails = messageService.GetMails();
         }
 
     }
