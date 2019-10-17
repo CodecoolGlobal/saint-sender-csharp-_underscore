@@ -1,19 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using SaintSender.DesktopUI.ViewModels;
 
 namespace SaintSender.DesktopUI.Views
 {
@@ -22,17 +9,12 @@ namespace SaintSender.DesktopUI.Views
     /// </summary>
     public partial class OpenEmailWindow : Window
     {
-        private readonly MainWindowViewModel mainWindowViewModel;
-
-        private readonly MainWindow mainWindow;
-
-        public OpenEmailWindow()
+        private string encoding = "<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>";
+        public OpenEmailWindow(string mainBody)
         {
             InitializeComponent();
-            mainWindowViewModel = new MainWindowViewModel();
-            mainWindow = new MainWindow();
-            string strHtml = mainWindowViewModel.emails[mainWindow.messageId].Body;
-            browser.NavigateToString(strHtml);
+            browser.NavigateToString(encoding + mainBody);
+          
         }
     }
 }

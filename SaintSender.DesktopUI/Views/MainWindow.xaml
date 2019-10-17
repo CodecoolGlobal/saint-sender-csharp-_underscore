@@ -11,7 +11,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Name="listBox" Grid.Column="1" ItemsSource="{Binding emails}" ListBoxItem.MouseDoubleClick="lbi_MouseDoubleClick">
+        <ListBox Name="listBox" Grid.Column="1" ItemsSource="{Binding emails}" SelectedItem="{Binding selectedEmail}" ListBoxItem.MouseDoubleClick="lbi_MouseDoubleClick">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -23,7 +23,7 @@
         </ListBox>
         <Button Grid.Column="0" Content="Compose" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Padding="10">
         </Button>
-        <TextBlock Text="{Binding SelectedItem.MessageId, ElementName=listBox}"/>
+        <TextBlock Text="{Binding selectedEmail.Subject}"/>
 
     </Grid>
 </Window>
