@@ -11,6 +11,7 @@ using SaintSender.Core.Entities;
 using MailKit.Search;
 using MimeKit;
 using MailKit.Net.Smtp;
+using System.Windows;
 
 namespace SaintSender.Core.Services
 {
@@ -52,15 +53,7 @@ namespace SaintSender.Core.Services
             BodyBuilder bodyBuilder = new BodyBuilder();
             message.From.Add(new MailboxAddress("underscoretestemail@gmail.com"));
             message.To.Add(new MailboxAddress(email.Recipient));
-            if (email.Subject == null)
-            {
-                message.Subject = "";
-            }
-            else
-            {
-                message.Subject = email.Subject;
-            }
-
+            message.Subject = email.Subject;
             bodyBuilder.HtmlBody = email.Body;
             message.Body = bodyBuilder.ToMessageBody();
             SmtpClient client = new SmtpClient();

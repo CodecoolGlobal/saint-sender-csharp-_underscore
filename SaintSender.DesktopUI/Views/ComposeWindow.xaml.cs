@@ -31,14 +31,18 @@ namespace SaintSender.DesktopUI.Views
 
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
-            //messagebox discard
+            //messagebox discard mail
             this.Close();
         }
 
         private void send_Click(object sender, RoutedEventArgs e)
         {
             composeWindowViewModel.CopmoseMail();
-            this.Close();
+            if (composeWindowViewModel.IsReadyToSend())
+            {
+                composeWindowViewModel.Send();
+                this.Close();
+            }
         }
     }
 }

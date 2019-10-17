@@ -27,8 +27,8 @@ namespace SaintSender.Core.Entities
         public Email(string recipient, string subject, string body)
         {
             Recipient = recipient;
-            Subject = subject;
-            Body = body;
+            Subject = subject ?? "";
+            Body = body ?? "";
         }
     }
 }
