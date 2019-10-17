@@ -16,7 +16,7 @@ namespace SaintSender.Core.Entities
             From = from.ToString();
             Subject = subject;
             Body = body;
-            Date = date.ToString();
+            Date = date.ToString("yyyy MMM dd HH:mm");
         }
 
         public Email(string recipient, string subject, string body)
