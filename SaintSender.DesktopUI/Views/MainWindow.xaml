@@ -19,7 +19,6 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <!--<ListBox Name="listBox" Grid.Column="1" ItemsSource="{Binding emails}" SelectedItem="{Binding selectedEmail}" ListBoxItem.MouseDoubleClick="lbi_MouseDoubleClick">-->
         <ListBox x:Name="listBoxItems" Grid.Column="1" ItemsSource="{Binding Source={StaticResource src}}" SelectedItem="{Binding selectedEmail}" ListBoxItem.MouseDoubleClick="lbi_MouseDoubleClick">
                 <ListBox.ItemTemplate>
                 <DataTemplate>
