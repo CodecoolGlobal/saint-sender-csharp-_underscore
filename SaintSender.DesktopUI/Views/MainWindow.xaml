@@ -21,7 +21,9 @@
     <Grid>
         <ListBox x:Name="listBoxItems"
                  Margin="5"
-                 ItemsSource="{Binding Source={StaticResource src}}"
+                 ItemsSource="{Binding Source={StaticResource src}}" 
+                 SelectedItem="{Binding selectedEmail}" 
+                 ListBoxItem.MouseDoubleClick="lbi_MouseDoubleClick"
                  Grid.IsSharedSizeScope="True">
             <ListBox.ItemTemplate>
                 <DataTemplate>

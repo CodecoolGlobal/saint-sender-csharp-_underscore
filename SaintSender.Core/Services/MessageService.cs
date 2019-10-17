@@ -1,4 +1,4 @@
-﻿using MailKit;
+using MailKit;
 using MailKit.Net.Imap;
 using MailKit.Security;
 using System.Collections.Generic;
@@ -53,7 +53,7 @@ namespace SaintSender.Core.Services
             foreach (UniqueId uniqueId in uniqueIds)
             {
                 MimeMessage message = client.Inbox.GetMessage(uniqueId);
-                emails.Add(new Email(message.From, message.Subject, message.Body, message.Date));
+                emails.Add(new Email(message.From, message.Subject, message.HtmlBody, message.Date));
             }
             return emails;
         }
