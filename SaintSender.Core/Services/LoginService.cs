@@ -16,6 +16,6 @@ namespace SaintSender.Core.Services
             client.Connect("imap.gmail.com", 993, true);
             client.AuthenticationMechanisms.Remove("XOAUTH2");
             client.Authenticate(userName, password);
-        } 
+        }
     }
 }
