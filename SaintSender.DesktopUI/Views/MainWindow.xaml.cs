@@ -28,10 +28,10 @@ namespace SaintSender.DesktopUI.Views
 
         private void lbi_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            OpenEmailWindow win = new OpenEmailWindow(mainWindowViewModel.selectedEmail.Body,
+            OpenEmailWindow emailWindow = new OpenEmailWindow(mainWindowViewModel.selectedEmail.Body,
                                                       mainWindowViewModel.selectedEmail.From,
                                                       mainWindowViewModel.selectedEmail.Subject);
-            win.Show();
+            emailWindow.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

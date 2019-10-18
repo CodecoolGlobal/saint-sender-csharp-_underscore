@@ -36,7 +36,7 @@ namespace SaintSender.DesktopUI.ViewModels
         {
             if (string.IsNullOrEmpty(Recipient))
             {
-                _ = MessageBox.Show("You can't send a mail without a recipient!", "Alert", MessageBoxButton.OK);
+                MessageBox.Show("You can't send a mail without a recipient!", "Alert", MessageBoxButton.OK);
                 return false;
             }
 

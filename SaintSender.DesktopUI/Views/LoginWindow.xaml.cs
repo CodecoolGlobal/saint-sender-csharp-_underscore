@@ -1,18 +1,6 @@
 ﻿using SaintSender.Core.Entities;
 using SaintSender.DesktopUI.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SaintSender.DesktopUI.Views
 {
@@ -31,11 +19,14 @@ namespace SaintSender.DesktopUI.Views
 
         private void SingInButton_Click(object sender, RoutedEventArgs e)
         {
-            loginWindowViewModel.ExecuteLogin();
-            User user = new User(loginWindowViewModel.userName, loginWindowViewModel.password);
-            MainWindow mainWindow = new MainWindow(user);
-            mainWindow.Show();
-            Close();
+            if (loginWindowViewModel.CanLogin())
+            {
+                loginWindowViewModel.ExecuteLogin();
+                User user = new User(loginWindowViewModel.userName, loginWindowViewModel.password);
+                MainWindow mainWindow = new MainWindow(user);
+                mainWindow.Show();
+                Close();
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
