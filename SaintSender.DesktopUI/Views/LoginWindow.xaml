@@ -46,7 +46,12 @@
                      Text="{Binding password}"
                      Style="{StaticResource TextBoxStyle}"
                      FontSize="16"
-                     VerticalContentAlignment="Center"></TextBox>
+                     VerticalContentAlignment="Center">
+                <TextBox.InputBindings>
+                    <KeyBinding Command="ApplicationCommands.NotACommand" Key="C" Modifiers="Ctrl"/>
+                    <KeyBinding Command="ApplicationCommands.NotACommand" Key="X" Modifiers="Ctrl"/>
+                </TextBox.InputBindings>
+            </TextBox>
         </DockPanel>
         <StackPanel Grid.Row="2"
                     Grid.Column="1"
@@ -62,6 +67,6 @@
                     Padding="5"
                     Click="CancelButton_Click"></Button>
         </StackPanel>
-
+        
     </Grid>
 </Window>
