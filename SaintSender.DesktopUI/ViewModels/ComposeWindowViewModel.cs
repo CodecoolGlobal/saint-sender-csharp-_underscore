@@ -37,12 +37,13 @@ namespace SaintSender.DesktopUI.ViewModels
             if (string.IsNullOrEmpty(Recipient))
             {
                 MessageBox.Show("You can't send a mail without a recipient!", "Alert", MessageBoxButton.OK);
+                _ = MessageBox.Show("You can't send a mail without a recipient!", "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 
             if (!IsEmailAdressValid())
             {
-                MessageBox.Show("Email address is invalid!");
+                MessageBox.Show("Email address is invalid!", "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             return true;

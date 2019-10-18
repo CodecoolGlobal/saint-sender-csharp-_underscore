@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaintSender.DesktopUI.Views"
         mc:Ignorable="d"
-        Title="OpenEmailWindow" Height="450" Width="800">
+        Title="OpenEmailWindow"
+        Height="450"
+        Width="800">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -20,6 +22,7 @@
             <Label>From</Label>
             <TextBox Name="From"
                      Margin="5,0"
+                     VerticalContentAlignment="Center"
                      IsReadOnly="True"></TextBox>
         </DockPanel>
 
@@ -28,9 +31,13 @@
             <Label>Subject</Label>
             <TextBox Name="Subject"
                      Margin="5,0"
+                     VerticalContentAlignment="Center"
                      IsReadOnly="True"></TextBox>
         </DockPanel>
-        <WebBrowser Name="browser" Grid.Row="2" Grid.RowSpan="2"/>
+        <WebBrowser Name="browser"
+                    Margin="5"
+                    Grid.Row="2"
+                    Grid.RowSpan="2" />
 
     </Grid>
 </Window>
