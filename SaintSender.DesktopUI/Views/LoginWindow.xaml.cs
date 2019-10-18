@@ -21,7 +21,15 @@ namespace SaintSender.DesktopUI.Views
         {
             if (loginWindowViewModel.CanLogin())
             {
-                loginWindowViewModel.ExecuteLogin();
+                try
+                {
+                    loginWindowViewModel.ExecuteLogin();
+                }
+                catch (MailKit.Security.AuthenticationException)
+                {
+                    MessageBox.Show("Invalid username and password combination!", "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
                 User user = new User(loginWindowViewModel.userName, loginWindowViewModel.password);
                 MainWindow mainWindow = new MainWindow(user);
                 mainWindow.Show();

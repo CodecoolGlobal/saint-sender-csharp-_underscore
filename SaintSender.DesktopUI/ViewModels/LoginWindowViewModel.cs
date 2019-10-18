@@ -17,7 +17,7 @@ namespace SaintSender.DesktopUI.ViewModels
         {
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Please fill all of the fields!", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please fill all of the fields!", "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             return true;
